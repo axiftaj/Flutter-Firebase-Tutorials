@@ -38,6 +38,8 @@ dependencies:
   firebase_storage: ^10.3.7
   firebase_auth: ^3.7.0
   cloud_firestore: ^3.4.6
+  country_picker: ^2.0.16
+  pin_code_fields: ^7.4.0
   fluttertoast: ^8.0.9
 
 
