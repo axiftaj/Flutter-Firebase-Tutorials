@@ -1,12 +1,13 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:untitled1/ui/auth/login_with_phone_number.dart';
+import 'package:untitled1/ui/auth/phone_auth/login_with_phone_number.dart';
 import 'package:untitled1/ui/auth/signup_screen.dart';
-import 'package:untitled1/ui/posts/post_screen.dart';
+
 import 'package:untitled1/utils/utils.dart';
 
 import '../../widgets/round_button.dart';
+import '../firebase_database/post_screen.dart';
 
 
 class LoginScreen extends StatefulWidget {
@@ -42,13 +43,13 @@ class _LoginScreenState extends State<LoginScreen> {
     _auth.signInWithEmailAndPassword(
         email: emailController.text,
         password: passwordController.text.toString()).then((value){
-          Utils().toastMessage(value.user!.email.toString());
-          Navigator.push(context,
-              MaterialPageRoute(builder: (context) => PostScreen())
-          );
-          setState(() {
-            loading = false ;
-          });
+      Utils().toastMessage(value.user!.email.toString());
+      Navigator.push(context,
+          MaterialPageRoute(builder: (context) => PostScreen())
+      );
+      setState(() {
+        loading = false ;
+      });
     }).onError((error, stackTrace){
       debugPrint(error.toString());
       Utils().toastMessage(error.toString());
@@ -78,7 +79,7 @@ class _LoginScreenState extends State<LoginScreen> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Form(
-                key: _formKey,
+                  key: _formKey,
                   child: Column(
                     children: [
                       TextFormField(
@@ -142,19 +143,23 @@ class _LoginScreenState extends State<LoginScreen> {
               const SizedBox(height: 30,),
               InkWell(
                 onTap: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => LoginWithPhoneNumber()));
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => LoginWithPhoneNumber()));
                 },
                 child: Container(
                   height: 50,
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(50),
-                    border: Border.all(
-                      color: Colors.black
-                    )
+                      borderRadius: BorderRadius.circular(50),
+                      border: Border.all(
+                          color: Colors.black
+                      )
                   ),
-                  child: Center(child: Text('Login with phone number')),
+                  child: Center(
+                    child: Text('Login with phone'),
+                  ),
                 ),
-              ),
+              )
+
             ],
           ),
         ),
