@@ -1,24 +1,29 @@
+
+
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/material.dart';
 import 'package:untitled1/ui/auth/login_screen.dart';
-import 'package:untitled1/ui/firebase_firestore/fire_store_list.dart';
 import 'package:untitled1/utils/utils.dart';
 
 
 
-class ShowFireStorePostScreen extends StatefulWidget {
-  const ShowFireStorePostScreen({Key? key}) : super(key: key);
+class InsertFireStoreScreen extends StatefulWidget {
+  const InsertFireStoreScreen({Key? key}) : super(key: key);
 
   @override
-  State<ShowFireStorePostScreen> createState() => _ShowFireStorePostScreenState();
+  State<InsertFireStoreScreen> createState() => _InsertFireStoreScreenState();
 }
 
-class _ShowFireStorePostScreenState extends State<ShowFireStorePostScreen> {
+class _InsertFireStoreScreenState extends State<InsertFireStoreScreen> {
 
   final auth = FirebaseAuth.instance ;
   final ref = FirebaseDatabase.instance.ref('Post');
+
+  final  fireStore = FirebaseFirestore.instance.collection('users');
+
 
 
   @override
@@ -47,12 +52,19 @@ class _ShowFireStorePostScreenState extends State<ShowFireStorePostScreen> {
       ),
       body: Column(
         children: [
-
         ],
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: (){
-          Navigator.push(context, MaterialPageRoute(builder: (context) => InsertFireStoreScreen()));
+
+          String id = DateTime.now().millisecondsSinceEpoch.toString() ;
+          fireStore.doc(id).set({
+            'full_name': "asdf", // John Doe
+            'company': "adsf", // Stokes and Sons
+            'age': 12  ,
+            'id':id
+          });
+
         } ,
         child: Icon(Icons.add),
       ),
