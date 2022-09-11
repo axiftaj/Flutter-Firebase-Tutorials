@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:untitled1/ui/auth/phone_auth/login_with_phone_number.dart';
 import 'package:untitled1/ui/auth/signup_screen.dart';
+import 'package:untitled1/ui/fogot_password.dart';
 
 import 'package:untitled1/utils/utils.dart';
 
@@ -125,6 +126,16 @@ class _LoginScreenState extends State<LoginScreen> {
                     login();
                   }
                 },
+              ),
+              Align(
+                alignment: Alignment.bottomRight,
+                child: TextButton(onPressed: (){
+                  Navigator.push(context,
+                      MaterialPageRoute(
+                          builder:(context) => ForgotPasswordScreen())
+                  );
+                },
+                    child: Text('Forgot Password?')),
               ),
               const SizedBox(height: 30,),
               Row(
