@@ -37,6 +37,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
       loading = true ;
     });
 
+
+
     // _auth.sendSignInLinkToEmail(
     //   email: emailController.text.toString(),
     //   actionCodeSettings: ActionCodeSettings(
