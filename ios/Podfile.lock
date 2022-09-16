@@ -611,6 +611,9 @@ PODS:
     - FirebaseAuth (~> 9.4.0)
   - Firebase/CoreOnly (9.4.0):
     - FirebaseCore (= 9.4.0)
+  - Firebase/Database (9.4.0):
+    - Firebase/CoreOnly
+    - FirebaseDatabase (~> 9.4.0)
   - Firebase/Firestore (9.4.0):
     - Firebase/CoreOnly
     - FirebaseFirestore (~> 9.4.0)
@@ -623,6 +626,10 @@ PODS:
     - Flutter
   - firebase_core (1.21.1):
     - Firebase/CoreOnly (= 9.4.0)
+    - Flutter
+  - firebase_database (9.1.3):
+    - Firebase/Database (= 9.4.0)
+    - firebase_core
     - Flutter
   - firebase_storage (10.3.7):
     - Firebase/Storage (= 9.4.0)
@@ -649,6 +656,9 @@ PODS:
     - FirebaseCore (~> 9.0)
   - FirebaseCoreInternal (9.5.0):
     - "GoogleUtilities/NSData+zlib (~> 7.7)"
+  - FirebaseDatabase (9.4.0):
+    - FirebaseCore (~> 9.0)
+    - leveldb-library (~> 1.22)
   - FirebaseFirestore (9.4.0):
     - abseil/algorithm (~> 1.20211102.0)
     - abseil/base (~> 1.20211102.0)
@@ -746,6 +756,8 @@ PODS:
     - Libuv-gRPC (= 0.0.10)
   - gRPC-Core/Interface (1.44.0)
   - GTMSessionFetcher/Core (2.0.0)
+  - image_picker_ios (0.0.1):
+    - Flutter
   - leveldb-library (1.22.1)
   - Libuv-gRPC (0.0.10):
     - Libuv-gRPC/Implementation (= 0.0.10)
@@ -765,9 +777,11 @@ DEPENDENCIES:
   - cloud_firestore (from `.symlinks/plugins/cloud_firestore/ios`)
   - firebase_auth (from `.symlinks/plugins/firebase_auth/ios`)
   - firebase_core (from `.symlinks/plugins/firebase_core/ios`)
+  - firebase_database (from `.symlinks/plugins/firebase_database/ios`)
   - firebase_storage (from `.symlinks/plugins/firebase_storage/ios`)
   - Flutter (from `Flutter`)
   - fluttertoast (from `.symlinks/plugins/fluttertoast/ios`)
+  - image_picker_ios (from `.symlinks/plugins/image_picker_ios/ios`)
 
 SPEC REPOS:
   trunk:
@@ -781,6 +795,7 @@ SPEC REPOS:
     - FirebaseCoreDiagnostics
     - FirebaseCoreExtension
     - FirebaseCoreInternal
+    - FirebaseDatabase
     - FirebaseFirestore
     - FirebaseStorage
     - FirebaseStorageInternal
@@ -802,12 +817,16 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/firebase_auth/ios"
   firebase_core:
     :path: ".symlinks/plugins/firebase_core/ios"
+  firebase_database:
+    :path: ".symlinks/plugins/firebase_database/ios"
   firebase_storage:
     :path: ".symlinks/plugins/firebase_storage/ios"
   Flutter:
     :path: Flutter
   fluttertoast:
     :path: ".symlinks/plugins/fluttertoast/ios"
+  image_picker_ios:
+    :path: ".symlinks/plugins/image_picker_ios/ios"
 
 SPEC CHECKSUMS:
   abseil: ebe5b5529fb05d93a8bdb7951607be08b7fa71bc
@@ -816,6 +835,7 @@ SPEC CHECKSUMS:
   Firebase: 7703fc4022824b6d6db1bf7bea58d13b8e17ec46
   firebase_auth: 74cfbf7be1e3e7fdaac9e7f117cefd89155251a9
   firebase_core: 8e500850dd138c269d197c8dfca3ae886fa3b6f2
+  firebase_database: 31aebb8797cd59eb881375aa0debe33eba5a1c2a
   firebase_storage: 846832b7f2d22238678dc9abc513f2151f102462
   FirebaseAppCheckInterop: 8e95b4329809e3c06fb425acb3839dcadfe23673
   FirebaseAuth: ae5d4402e1516497357d909162b091b3ca2a2e9c
@@ -824,6 +844,7 @@ SPEC CHECKSUMS:
   FirebaseCoreDiagnostics: 17cbf4e72b1dbd64bfdc33d4b1f07bce4f16f1d8
   FirebaseCoreExtension: 2904492b693a6871ddbd1088c9d1fe6e54384050
   FirebaseCoreInternal: 50a8e39cae8abf72d5145d07ea34c3244f70862b
+  FirebaseDatabase: e93f5441b549ea4492a8d8a0c7d612ac46c1b12a
   FirebaseFirestore: 945196dd78f4e92de6fc47b38569a1e7088af81f
   FirebaseStorage: 160ba975dd3452d9c59a3bf5ea9bf70ff96bd3c2
   FirebaseStorageInternal: 4f8a9e27391a99ac0692adbbd072fe0e5c4125fe
@@ -834,6 +855,7 @@ SPEC CHECKSUMS:
   "gRPC-C++": 9675f953ace2b3de7c506039d77be1f2e77a8db2
   gRPC-Core: 943e491cb0d45598b0b0eb9e910c88080369290b
   GTMSessionFetcher: 681175626052e03fdde7952f7e9c7a9785719506
+  image_picker_ios: b786a5dcf033a8336a657191401bfdf12017dabb
   leveldb-library: 50c7b45cbd7bf543c81a468fe557a16ae3db8729
   Libuv-gRPC: 55e51798e14ef436ad9bc45d12d43b77b49df378
   nanopb: b552cce312b6c8484180ef47159bc0f65a1f0431

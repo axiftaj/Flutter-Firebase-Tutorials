@@ -36,18 +36,34 @@ class _SignUpScreenState extends State<SignUpScreen> {
     setState(() {
       loading = true ;
     });
-    _auth.createUserWithEmailAndPassword(
-        email: emailController.text.toString(),
-        password: passwordController.text.toString()).then((value){
-      setState(() {
-        loading = false ;
-      });
-    }).onError((error, stackTrace){
-      Utils().toastMessage(error.toString());
-      setState(() {
-        loading = false ;
-      });
-    });
+
+    // _auth.sendSignInLinkToEmail(
+    //   email: emailController.text.toString(),
+    //   actionCodeSettings: ActionCodeSettings(
+    //     url: 'https://flutterauth.page.link/',
+    //     handleCodeInApp: true,
+    //     iOSBundleId: 'com.techease.dumy',
+    //     androidPackageName: 'com.techease.dumy',
+    //     androidMinimumVersion: "1",
+    //   ),
+    //
+    // ).then((value){
+    // }).onError((error, stackTrace){
+    //   print(error.toString());
+    // });
+
+    // _auth.createUserWithEmailAndPassword(
+    //     email: emailController.text.toString(),
+    //     password: passwordController.text.toString()).then((value){
+    //   setState(() {
+    //     loading = false ;
+    //   });
+    // }).onError((error, stackTrace){
+    //   Utils().toastMessage(error.toString());
+    //   setState(() {
+    //     loading = false ;
+    //   });
+    // });
   }
 
   @override
